@@ -3,15 +3,16 @@ import Card from '../UI/Card';
 import MealItem from './MealItem/MealItem';
 import { useEffect, useState } from 'react';
 
+import config from '../../dataBase';
+
+const address = config.databaseAddress;
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState(null);
   useEffect(() => {
     const fetchMeals = async () => {
-      const response = await fetch(
-        'https://reactdine-default-rtdb.firebaseio.com/Meals.json'
-      );
+      const response = await fetch(`${address}/Meals.json`);
 
       if (!response.ok) {
         throw new Error('Something Went Wrong :( ');

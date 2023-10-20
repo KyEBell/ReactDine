@@ -1,3 +1,5 @@
 node_modules
 /public/
 src/assets/
+.env
+src/database.js
