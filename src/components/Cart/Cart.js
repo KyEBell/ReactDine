@@ -4,7 +4,9 @@ import Modal from '../UI/Modal';
 import CartContext from '../../store/cart-context';
 import CartItem from './CartItem';
 import Checkout from './Checkout';
+import config from '../../dataBase';
 
+const address = config.databaseAddress;
 const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
@@ -27,16 +29,13 @@ const Cart = (props) => {
 
   const submitOrderHandler = async (userData) => {
     setIsSubmitting(true);
-    const response = await fetch(
-      'https://reactdine-default-rtdb.firebaseio.com/orders.json',
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          user: userData,
-          orderedItems: cartCntx.items,
-        }),
-      }
-    );
+    const response = await fetch(`${address}/orders.json`, {
+      method: 'POST',
+      body: JSON.stringify({
+        user: userData,
+        orderedItems: cartCntx.items,
+      }),
+    });
     setIsSubmitting(false);
     setDidSubmit(true);
     cartCntx.clearCart();
