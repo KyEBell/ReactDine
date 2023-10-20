@@ -1,5 +1,7 @@
 # ReactDine
-Foor Ordering App - Built With React
+Foor Ordering App - Built With React, CSS Modules and Firebase. 
+
+React Cart and Meal Component allow user data to be stored on a Firebase backend. 
 
 ![image](https://github.com/KyEBell/ReactDine/assets/126792185/a22ae800-fc43-4b01-b97a-030766092c0c)
 
